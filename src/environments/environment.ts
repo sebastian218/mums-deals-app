@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiConfig: {
+    path: 'https://kabsa.yallababy.com/api/v1/products/best-selling-products-by-subcategory',
+    secretKey: '1DIPIkKeq8'
+  }
 };
 
 /*
