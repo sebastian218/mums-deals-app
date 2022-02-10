@@ -1,13 +1,25 @@
 <div class="border-bottom p-3">
-  <div class="row">
+  <div class="row align-items-center">
     <div class="col-6">
       <span> {{'TOOLBAR.AVAILABE' | translate}}: [amount] </span>
     </div>
-    <div class="col-3">
-      <span> icons </span>
+    <div class="col-2 d-flex">
+      <div class="me-4">
+        <app-action-icon iconName='grid_on'></app-action-icon>
+      </div>
+      <div>
+        <app-action-icon iconName='list'></app-action-icon>
+      </div>
     </div>
-    <div class="col-3">
-      <span> {{'TOOLBAR.SORT' | translate}}</span>
+    <div class="col-4">
+      <mat-form-field appearance="fill">
+        <mat-label>{{'TOOLBAR.SORT' | translate}}</mat-label>
+        <mat-select [(ngModel)]="selectedValue" name="food">
+          <mat-option *ngFor="let item of sortItems" [value]="item.value">
+            {{item.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
   </div>
 

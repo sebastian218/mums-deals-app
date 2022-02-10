@@ -1,0 +1,17 @@
+:host {
+
+  mat-form-field::ng-deep {
+    width: 100%;
+
+    div.mat-form-field-wrapper {
+
+      margin-top: 7px;
+
+    }
+
+    .mat-form-field-flex {
+
+      background-color: rgba(0, 0, 0, 0);
+    }
+  }
+}

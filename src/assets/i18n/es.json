@@ -4,7 +4,12 @@
   },
   "TOOLBAR": {
     "AVAILABE": "Cantidad Disponible",
-    "SORT": "Ordenar resultados"
+    "SORT": "Ordenar resultados",
+    "SORT-OPTIONS": {
+      "A-Z": "A-Z",
+      "LOWEST-HIGHEST": "Mayor a menor precio",
+      "HIGHEST-LOWEST": "Menor a mayor precio"
+    }
   },
   "SIDEBAR": {
     "FILTER": "Filtrar resultados"
