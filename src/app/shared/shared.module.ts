@@ -7,6 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatIconModule } from '@angular/material/icon';
 import { ActionIconComponent } from './components/action-icon/action-icon.component';
 import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {MatSelectModule} from '@angular/material/select';
     ReactiveFormsModule,
     TranslateModule.forChild(),
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCheckboxModule
   ],
   exports: [
     NavbarComponent,
@@ -29,7 +31,8 @@ import {MatSelectModule} from '@angular/material/select';
     TranslateModule,
     MatIconModule,
     ActionIconComponent,
-    MatSelectModule
+    MatSelectModule,
+    MatCheckboxModule
   ]
 })
 export class SharedModule { }
