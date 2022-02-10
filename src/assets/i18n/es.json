@@ -1,5 +1,12 @@
 {
   "NAVBAR": {
-    "TITLE": "Welcome to Mum's Deals ! "
+    "TITLE": "Bienvenido a Ofertas para Madres !"
+  },
+  "TOOLBAR": {
+    "AVAILABE": "Cantidad Disponible",
+    "SORT": "Ordenar resultados"
+  },
+  "SIDEBAR": {
+    "FILTER": "Filtrar resultados"
   }
 }
