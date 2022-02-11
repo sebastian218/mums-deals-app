@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { StoreModule } from '@ngrx/store';
 import { SharedModule } from './shared/shared.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -13,6 +12,7 @@ import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-transla
 import { LOCATION_INITIALIZED, registerLocaleData } from '@angular/common';
 import esAR from '@angular/common/locales/es-AR';
 import { I18nService } from './core/i18n/i18n.service';
+import { CoreModule } from './core/core.module';
 
 registerLocaleData(esAR, 'es-Ar');
 
@@ -59,7 +59,7 @@ export function setupTranslateFactory(
     }),
     AppRoutingModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({}, {}),
+    CoreModule,
     SharedModule,
     HttpClientModule,
   ],
