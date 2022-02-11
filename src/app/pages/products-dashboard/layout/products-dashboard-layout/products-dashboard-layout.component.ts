@@ -14,7 +14,7 @@ import * as fromProductSoreSelectors from '../../store/products-store.selectors'
 
 export class ProductsDashboardLayoutComponent implements OnInit {
 
-  products$: Observable<IProduct[]> = this.store.select(fromProductSoreSelectors.selectFilteredProducts);
+  products$: Observable<IProduct[]> = this.store.select(fromProductSoreSelectors.selectProducts);
 
   constructor(private store: Store<IProductsDashboardState>) { }
 

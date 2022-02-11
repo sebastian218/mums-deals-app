@@ -3,14 +3,8 @@
   <div class="mt-2">
     <section class="example-section">
       <h4>Por tipo:</h4>
-      <p>
-        <mat-checkbox>Type A</mat-checkbox>
-      </p>
-      <p>
-        <mat-checkbox>Type B</mat-checkbox>
-      </p>
-      <p>
-        <mat-checkbox>Type C</mat-checkbox>
+      <p *ngFor="let item of (typesOptions$ | async)">
+        <mat-checkbox (change)="handleCheck($event,item)">{{item | titlecase}}</mat-checkbox>
       </p>
     </section>
   </div>

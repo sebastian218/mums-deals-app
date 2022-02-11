@@ -9,6 +9,8 @@
 
     <ng-container *ngFor="let item of (products$ | async)">
       <span>{{item.title}}</span>
+      <br>
+      <span>{{item.product_type}}</span>
       <app-product></app-product>
     </ng-container>
 

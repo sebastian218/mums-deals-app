@@ -1,7 +1,7 @@
 <div class="border-bottom p-1">
   <div class="row align-items-center">
     <div class="col-6">
-      <span> {{'TOOLBAR.AVAILABE' | translate}}: [amount] </span>
+      <span> {{'TOOLBAR.AVAILABE' | translate}}: {{amount$ | async}} </span>
     </div>
     <div class="col-2 d-flex">
       <div class="me-4">
@@ -14,7 +14,7 @@
     <div class="col-4">
       <mat-form-field appearance="fill">
         <mat-label>{{'TOOLBAR.SORT' | translate}}</mat-label>
-        <mat-select [(ngModel)]="selectedValue" name="food">
+        <mat-select [(ngModel)]="selectedValue" name="food" (selectionChange)="handleSort($event)">          
           <mat-option *ngFor="let item of sortItems" [value]="item.value">
             {{item.viewValue}}
           </mat-option>
