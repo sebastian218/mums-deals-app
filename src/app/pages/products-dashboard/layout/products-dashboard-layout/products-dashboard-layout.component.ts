@@ -10,6 +10,7 @@ export class ProductsDashboardLayoutComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }
