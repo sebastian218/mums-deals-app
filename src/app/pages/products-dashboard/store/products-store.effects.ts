@@ -20,7 +20,7 @@ export class ProductDashboardEffects {
       ofType(fromProductActions.fetchProducts),
       exhaustMap((action) =>
         this.productService.getProducts().pipe(
-          map(data => {
+          map((data) => {
             return fromProductActions.fetchSuccess({ products: data });
           }),
           catchError(error => of(fromProductActions.fetchError({ error })))

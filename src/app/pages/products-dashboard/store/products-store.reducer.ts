@@ -1,21 +1,35 @@
 import { state } from "@angular/animations";
 import { Action, createReducer, on } from "@ngrx/store";
+import { IProduct } from "../model/product.model";
 import { changeDisplay, fetchError, fetchProducts, fetchSuccess, filterByType, sortBy } from "./products-store.actions";
 
-export const productsSotreSelector = 'products-dashboard';
+export const productsSotreSelector = 'productsDashboard';
+
+export enum DisplayType {
+  GRID,
+  LIST
+}
+
+export enum Sort {
+  AZ,
+  MAY_TO_MIN,
+  MIN_TO_MAY
+}
 
 export interface IProductsDashboardState {
-  products: any[],
-  filteredProducts: any[],
+  products: IProduct[],
+  filteredProducts: IProduct[],
   fetchPending: boolean,
   fetchError: boolean,
+  display: DisplayType,
 }
 
 export const initialState: IProductsDashboardState = {
   products: [],
   filteredProducts: [],
   fetchPending: true,
-  fetchError: false
+  fetchError: false,
+  display: DisplayType.GRID
 }
 
 const productsDashboardReducer = createReducer(
