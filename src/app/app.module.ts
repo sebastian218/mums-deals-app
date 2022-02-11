@@ -24,7 +24,7 @@ export function setupTranslateFactory(
   service: I18nService,
   injector: Injector,
 ) {
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+
   return () => {
     return new Promise<void>(async (resolve, reject) => {
       try {

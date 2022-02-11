@@ -6,6 +6,7 @@ import { SidebarFiltersComponent } from './components/sidebar-filters/sidebar-fi
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { ProductsDashboardLayoutComponent } from './layout/products-dashboard-layout/products-dashboard-layout.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ProductsStoreModule } from './store/products-store.module';
 
 
 
@@ -20,7 +21,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     ProductsDashboardRoutingModule,
-    SharedModule
+    SharedModule,
+    ProductsStoreModule
   ]
 })
 export class ProductsDashboardModule { }
