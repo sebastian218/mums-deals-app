@@ -15,7 +15,7 @@ import * as fromProductSoreSelectors from '../../store/products-store.selectors'
 export class ProductsDashboardLayoutComponent implements OnInit {
 
   products$: Observable<IProduct[]> = this.store.select(fromProductSoreSelectors.selectProducts);
-
+  fetchPending$: Observable<boolean> = this.store.select(fromProductSoreSelectors.selectFetchPending);
   constructor(private store: Store<IProductsDashboardState>) { }
 
   ngOnInit(): void {

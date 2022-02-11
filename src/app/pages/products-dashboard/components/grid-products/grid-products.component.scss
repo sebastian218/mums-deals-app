@@ -1,0 +1,26 @@
+.grid-container {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: left;
+}
+
+.card {
+  min-width: 360px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  margin:20px;
+}
+.card:hover {
+  --tw-shadow: 0 1px 3px 0 rgba(0,0,0,0.1),0 1px 2px 0 rgba(0,0,0,0.06);
+  --tw-translate-y: -0.125rem;
+  transform:-0.125rem;
+  transition-duration: .2s;
+}
+
+h2 {
+  max-width: 197px;
+  text-align: center;
+}

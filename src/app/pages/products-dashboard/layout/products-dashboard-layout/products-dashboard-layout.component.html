@@ -6,15 +6,14 @@
 
   <div class="products-list">
     <app-toolbar></app-toolbar>
-
-    <ng-container *ngFor="let item of (products$ | async)">
-      <span>{{item.title}}</span>
-      <br>
-      <span>{{item.product_type}}</span>
-      <app-product></app-product>
-    </ng-container>
-
-
+    <div class="products-container">
+      <app-grid-products [products]="(products$ | async)"> </app-grid-products>
+      <div class="loading-container" *ngIf="(fetchPending$ | async)">
+        <mat-progress-spinner class="example-margin" color="accent" mode="indeterminate">
+        </mat-progress-spinner>
+      </div>
+    </div>
   </div>
+
 
 </div>

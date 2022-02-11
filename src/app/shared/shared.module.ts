@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ActionIconComponent } from './components/action-icon/action-icon.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     TranslateModule.forChild(),
     MatIconModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     NavbarComponent,
@@ -32,7 +34,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatIconModule,
     ActionIconComponent,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatProgressSpinnerModule
   ]
 })
 export class SharedModule { }

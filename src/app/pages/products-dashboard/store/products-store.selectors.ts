@@ -33,12 +33,7 @@ export const selectSortBy = createSelector(
   (state: IProductsDashboardState) => state.selectedSortBy
 )
 
-export const selectFetchParams = createSelector(
+export const selectFetchPending = createSelector(
   selectProductDashboardStore,
-  (state: IProductsDashboardState) => {
-    return {
-      sortBy: state.selectedSortBy,
-      filterBy: state.selectedTypes
-    }
-  }
+  (state: IProductsDashboardState) => state.fetchPending
 )
