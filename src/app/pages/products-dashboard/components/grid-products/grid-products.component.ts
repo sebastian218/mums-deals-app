@@ -6,13 +6,8 @@ import { IProduct } from '../../model/product.model';
   templateUrl: './grid-products.component.html',
   styleUrls: ['./grid-products.component.scss']
 })
-export class GridProductsComponent implements OnInit {
+export class GridProductsComponent {
 
   @Input() products: IProduct[] | null = []
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

@@ -1,25 +1,30 @@
-<div class="border-bottom p-1">
+<div class="border-bottom p-2">
   <div class="row align-items-center">
     <div class="col-6">
       <span> {{'TOOLBAR.AVAILABE' | translate}}: {{amount$ | async}} </span>
     </div>
-    <div class="col-2 d-flex">
-      <div class="me-4">
+    <div class="col-2 d-flex display-mode">
+      <div class="me-4" (click)="handleDisplay('grid')">
         <app-action-icon iconName='grid_on'></app-action-icon>
       </div>
-      <div>
+      <div (click)="handleDisplay('list')">
         <app-action-icon iconName='list'></app-action-icon>
       </div>
     </div>
-    <div class="col-4">
+    <div class="col-4 sort-select">
       <mat-form-field appearance="fill">
         <mat-label>{{'TOOLBAR.SORT' | translate}}</mat-label>
-        <mat-select [(ngModel)]="selectedValue" name="food" (selectionChange)="handleSort($event)">          
+        <mat-select [(ngModel)]="selectedValue" name="food" (selectionChange)="handleSort($event)">
           <mat-option *ngFor="let item of sortItems" [value]="item.value">
             {{item.viewValue}}
           </mat-option>
         </mat-select>
       </mat-form-field>
+    </div>
+    <div class="col-6  filter-icon">
+      <div>
+        <app-action-icon iconName='settings'></app-action-icon>
+      </div>
     </div>
   </div>
 

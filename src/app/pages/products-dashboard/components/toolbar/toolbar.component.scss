@@ -15,3 +15,25 @@
     }
   }
 }
+
+.filter-icon{
+  display: none;
+}
+
+@media (max-width:950px){
+
+  .sort-select{
+    display: none;
+  }
+
+  .display-mode{
+    display: none !important;
+  }
+
+  .filter-icon{
+    display: flex;
+    justify-content: right;
+    cursor: pointer;
+  }
+
+}

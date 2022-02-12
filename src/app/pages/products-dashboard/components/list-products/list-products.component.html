@@ -1,1 +1,16 @@
-<p>list-products works!</p>
+<div class="list-container">
+  <ng-container *ngFor="let item of products">
+    <div class="card pt-2 pb-2 row">
+      <div class="col-4 text-center">
+        <img [src]="item.image.src" alt="productImg.png" height="130px">
+      </div>
+      <div class="product-info col-8 text-left">
+        <h2>{{item.title}}</h2>
+        <br>
+        <span> <strong>Type: </strong> {{item.product_type | titlecase}}</span>
+        <br>
+        <span><strong>Sold:</strong> {{item.quantitySold}}</span>
+      </div>
+    </div>
+  </ng-container>
+</div>

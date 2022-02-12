@@ -1,0 +1,20 @@
+.list-container {
+padding: 5px;
+}
+
+.card {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-around;
+  margin:10px;
+}
+
+@media (max-width:950px){
+
+  .grid-container{
+    justify-content: center;
+  }
+
+}
+

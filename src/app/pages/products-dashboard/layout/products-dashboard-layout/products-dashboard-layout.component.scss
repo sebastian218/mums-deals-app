@@ -18,3 +18,12 @@
   align-items: center;
   justify-content: center;
 }
+
+@media (max-width:950px){
+  .products-list{
+    width: 100%;
+  }
+  .sidebar{
+    display: none;
+  }
+}

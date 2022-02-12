@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { SortOptions } from '../../model/sortOptions.enum';
-import { IProductsDashboardState } from '../../store/products-store.reducer';
+import { DisplayType, IProductsDashboardState } from '../../store/products-store.reducer';
 import * as fromProductSoreSelectors from '../../store/products-store.selectors';
 import * as fromProductStoreActions from '../../store/products-store.actions';
 
@@ -27,6 +27,11 @@ export class ToolbarComponent implements OnInit {
 
   ngOnInit(): void {
 
+  }
+
+  handleDisplay(type: string) {
+    const mode = type === 'grid' ? DisplayType.GRID : DisplayType.LIST;
+    this.store.dispatch(fromProductStoreActions.setDisplay({ mode }));
   }
 
   handleSort(e: MatSelectChange) {

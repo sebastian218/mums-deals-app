@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { IProductsDashboardState } from '../../store/products-store.reducer';
+import { DisplayType, IProductsDashboardState } from '../../store/products-store.reducer';
 import * as fromProducDashboardActions from '../../store/products-store.actions';
 import { Observable } from 'rxjs';
 import { IProduct } from '../../model/product.model';
@@ -14,8 +14,12 @@ import * as fromProductSoreSelectors from '../../store/products-store.selectors'
 
 export class ProductsDashboardLayoutComponent implements OnInit {
 
+  readonly listMode = DisplayType.LIST;
+  readonly gridMode = DisplayType.GRID;
   products$: Observable<IProduct[]> = this.store.select(fromProductSoreSelectors.selectProducts);
   fetchPending$: Observable<boolean> = this.store.select(fromProductSoreSelectors.selectFetchPending);
+  displayMode$: Observable<DisplayType> = this.store.select(fromProductSoreSelectors.selectDisplayMode);
+
   constructor(private store: Store<IProductsDashboardState>) { }
 
   ngOnInit(): void {

@@ -13,14 +13,18 @@
   justify-content: center;
   margin:20px;
 }
-.card:hover {
-  --tw-shadow: 0 1px 3px 0 rgba(0,0,0,0.1),0 1px 2px 0 rgba(0,0,0,0.06);
-  --tw-translate-y: -0.125rem;
-  transform:-0.125rem;
-  transition-duration: .2s;
-}
 
 h2 {
   max-width: 197px;
   text-align: center;
 }
+
+
+@media (max-width:950px){
+
+  .grid-container{
+    justify-content: center;
+  }
+
+}
+

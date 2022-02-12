@@ -2,13 +2,13 @@ import { state } from "@angular/animations";
 import { Action, createReducer, on } from "@ngrx/store";
 import { IProduct } from "../model/product.model";
 import { SortOptions } from "../model/sortOptions.enum";
-import { changeDisplay, fetchError, fetchProducts, fetchProductsByTypeSuccess, fetchSuccess, sortBy } from "./products-store.actions";
+import { setDisplay, fetchError, fetchProducts, fetchProductsByTypeSuccess, fetchSuccess, sortBy } from "./products-store.actions";
 
 export const productsSotreSelector = 'productsDashboard';
 
 export enum DisplayType {
-  GRID,
-  LIST
+  GRID = 'GRID',
+  LIST = 'LIST'
 }
 
 export interface IProductsDashboardState {
@@ -52,7 +52,7 @@ const productsDashboardReducer = createReducer(
   on(sortBy, (state, props) => {
     return ({ ...state, products: handleSortOptionst(props.sort, state.products) })
   }),
-  on(changeDisplay, (state, props) => ({ ...state })),
+  on(setDisplay, (state, props) => ({ ...state, display: props.mode })),
 );
 
 
