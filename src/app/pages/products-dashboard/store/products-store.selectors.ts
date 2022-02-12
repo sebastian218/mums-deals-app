@@ -37,3 +37,13 @@ export const selectFetchPending = createSelector(
   selectProductDashboardStore,
   (state: IProductsDashboardState) => state.fetchPending
 )
+
+export const selectPriceRange = createSelector(
+  selectProductDashboardStore,
+  (state: IProductsDashboardState) => state.priceRange
+)
+
+export const selecSelectedtPriceRange = createSelector(
+  selectProductDashboardStore,
+  (state: IProductsDashboardState) => state.selectedPriceRange
+)

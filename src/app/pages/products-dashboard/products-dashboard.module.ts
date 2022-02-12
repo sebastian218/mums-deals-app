@@ -18,7 +18,6 @@ import { ListProductsComponent } from './components/list-products/list-products.
     ProductsDashboardLayoutComponent,
     GridProductsComponent,
     ListProductsComponent,
-
   ],
   imports: [
     CommonModule,

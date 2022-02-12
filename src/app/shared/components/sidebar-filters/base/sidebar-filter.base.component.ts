@@ -6,7 +6,8 @@ import * as fromProductSoreSelectors from '../../../../pages/products-dashboard/
 import * as fromProductStoreActions from '../../../../pages/products-dashboard/store/products-store.actions';
 import { Observable, Subject } from 'rxjs';
 import { MatCheckboxChange } from '@angular/material/checkbox';
-import { map, takeUntil } from 'rxjs/operators';
+import { filter, map, takeUntil } from 'rxjs/operators';
+import { MatSliderChange } from '@angular/material/slider';
 
 
 @Component({ template: '' })
@@ -15,7 +16,12 @@ export class SibeBareFiltersBaseComponent implements OnInit, OnDestroy {
   typesOptions$: Observable<Set<string>> = this.store.select(fromProductSoreSelectors.selectTypes);
   selectedTypes$: Observable<Set<string>> = this.store.select(fromProductSoreSelectors.selectSelectedTypes);
   selectedTypes: Set<string> = new Set();
-  private destroy$ = new Subject<any>();
+  destroy$ = new Subject<any>();
+
+  pricerange$: Observable<Array<number>> = this.store.select(fromProductSoreSelectors.selectPriceRange);
+  selectedPicerange$: Observable<Array<number>> = this.store.select(fromProductSoreSelectors.selecSelectedtPriceRange);
+  priceRange: Array<number> = [];
+  selectedRange: number = 0
 
   constructor(protected store: Store<ISideNavStore>) { }
 
@@ -25,6 +31,8 @@ export class SibeBareFiltersBaseComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.setSelectedTypesFromStore();
+    this.setPiceRange();
+    this.setSelectdPiceRangeFromStore();
   }
 
   handleClose(): void {
@@ -47,6 +55,32 @@ export class SibeBareFiltersBaseComponent implements OnInit, OnDestroy {
         this.selectedTypes = types;
       }))
       .subscribe();
+  }
+
+  handlePriceChange(e: MatSliderChange) {
+    const min = this.priceRange[0];
+    const max = e.value as number;
+    this.selectedRange = max;
+    this.store.dispatch(fromProductStoreActions.fetchProductsByPrice({ range: [min, max] }));
+  }
+  setPiceRange() {
+    this.pricerange$.pipe(
+      takeUntil(this.destroy$),
+      filter(range => range.length > 0),
+      map(range => {
+        this.priceRange = range;
+      })
+    ).subscribe();
+  }
+
+  setSelectdPiceRangeFromStore() {
+    this.selectedPicerange$.pipe(
+      takeUntil(this.destroy$),
+      filter(range => range.length > 0),
+      map(range => {
+        this.selectedRange = range[1];
+      })
+    ).subscribe();
   }
 
 }

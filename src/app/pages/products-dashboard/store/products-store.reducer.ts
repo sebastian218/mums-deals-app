@@ -1,7 +1,7 @@
 import { Action, createReducer, on } from "@ngrx/store";
 import { IProduct } from "../model/product.model";
 import { SortOptions } from "../model/sortOptions.enum";
-import { setDisplay, fetchError, fetchProducts, fetchProductsByTypeSuccess, fetchSuccess, sortBy, fetchProductsByType } from "./products-store.actions";
+import { setDisplay, fetchError, fetchProducts, fetchProductsByTypeSuccess, fetchSuccess, sortBy, fetchProductsByType, fetchProductsByPrice } from "./products-store.actions";
 
 export const productsSotreSelector = 'productsDashboard';
 
@@ -17,7 +17,9 @@ export interface IProductsDashboardState {
   display: DisplayType,
   types: Set<string>,
   selectedTypes: Set<string>,
-  selectedSortBy: SortOptions
+  selectedSortBy: SortOptions,
+  priceRange: Array<number>,
+  selectedPriceRange: Array<number>
 }
 
 export const initialState: IProductsDashboardState = {
@@ -27,7 +29,9 @@ export const initialState: IProductsDashboardState = {
   display: DisplayType.GRID,
   types: new Set(),
   selectedTypes: new Set(),
-  selectedSortBy: SortOptions.AZ
+  selectedSortBy: SortOptions.AZ,
+  priceRange: [],
+  selectedPriceRange: []
 }
 
 const productsDashboardReducer = createReducer(
@@ -37,6 +41,7 @@ const productsDashboardReducer = createReducer(
     ...state,
     products: handleSortOptionst(state.selectedSortBy, props.products),
     types: getTypes(props.products),
+    priceRange: getPriceRange(props.products),
     fetchPending: false
   })),
   on(fetchProductsByType, (state, props) => ({ ...state, selectedTypes: props.types })),
@@ -48,6 +53,7 @@ const productsDashboardReducer = createReducer(
       fetchPending: false
     })
   }),
+  on(fetchProductsByPrice, (store, props) => ({ ...store, selectedPriceRange: props.range })),
   on(fetchError, (state) => ({ ...state, fetchError: true, fetchPending: false })),
   on(sortBy, (state, props) => ({ ...state, products: handleSortOptionst(props.sort, state.products) })),
   on(setDisplay, (state, props) => ({ ...state, display: props.mode }))
@@ -71,4 +77,18 @@ const handleSortOptionst = (sort: SortOptions, products: IProduct[]): IProduct[]
     return products.map(el => el).sort((a, b) => a.title.localeCompare(b.title));
   }
   return products;
+}
+
+const getPriceRange = (products: IProduct[]): Array<number> => {
+  let priceRange: Array<number> = new Array();
+
+  products.forEach(prod => {
+    prod.variants.forEach(variant => {
+      priceRange.push(Number(variant.price));
+    })
+  });
+
+  priceRange.sort((a, b) => a - b);
+
+  return [Math.floor(priceRange[0]), Math.floor(priceRange[priceRange.length - 1])];
 }

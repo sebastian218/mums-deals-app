@@ -12,6 +12,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { ProductsStoreModule } from '../pages/products-dashboard/store/products-store.module';
 import { SibeBareFiltersBaseComponent } from './components/sidebar-filters/base/sidebar-filter.base.component';
+import {MatSliderModule} from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { SibeBareFiltersBaseComponent } from './components/sidebar-filters/base/
     MatCheckboxModule,
     MatProgressSpinnerModule,
     MatSidenavModule,
-    ProductsStoreModule
+    ProductsStoreModule,
+    MatSliderModule
   ],
   exports: [
     NavbarComponent,
@@ -44,7 +46,8 @@ import { SibeBareFiltersBaseComponent } from './components/sidebar-filters/base/
     MatProgressSpinnerModule,
     MatSidenavModule,
     SidebarFiltersComponent,
-    SibeBareFiltersBaseComponent
+    SibeBareFiltersBaseComponent,
+    MatSliderModule
   ]
 })
 export class SharedModule { }
