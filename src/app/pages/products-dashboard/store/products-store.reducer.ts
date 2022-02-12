@@ -1,7 +1,7 @@
 import { Action, createReducer, on } from "@ngrx/store";
 import { IProduct } from "../model/product.model";
 import { SortOptions } from "../model/sortOptions.enum";
-import { setDisplay, fetchError, fetchProducts, fetchProductsByTypeSuccess, fetchSuccess, sortBy } from "./products-store.actions";
+import { setDisplay, fetchError, fetchProducts, fetchProductsByTypeSuccess, fetchSuccess, sortBy, fetchProductsByType } from "./products-store.actions";
 
 export const productsSotreSelector = 'productsDashboard';
 
@@ -39,6 +39,7 @@ const productsDashboardReducer = createReducer(
     types: getTypes(props.products),
     fetchPending: false
   })),
+  on(fetchProductsByType, (state, props) => ({ ...state, selectedTypes: props.types })),
   on(fetchProductsByTypeSuccess, (state, props) => {
     const products = handleSortOptionst(state.selectedSortBy, props.products);
     return ({
@@ -48,10 +49,8 @@ const productsDashboardReducer = createReducer(
     })
   }),
   on(fetchError, (state) => ({ ...state, fetchError: true, fetchPending: false })),
-  on(sortBy, (state, props) => {
-    return ({ ...state, products: handleSortOptionst(props.sort, state.products) })
-  }),
-  on(setDisplay, (state, props) => ({ ...state, display: props.mode })),
+  on(sortBy, (state, props) => ({ ...state, products: handleSortOptionst(props.sort, state.products) })),
+  on(setDisplay, (state, props) => ({ ...state, display: props.mode }))
 );
 
 

@@ -10,12 +10,15 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { ProductsStoreModule } from '../pages/products-dashboard/store/products-store.module';
+import { SibeBareFiltersBaseComponent } from './components/sidebar-filters/base/sidebar-filter.base.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     SidebarFiltersComponent,
-    ActionIconComponent
+    ActionIconComponent,
+    SibeBareFiltersBaseComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +29,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatSelectModule,
     MatCheckboxModule,
     MatProgressSpinnerModule,
-    MatSidenavModule
+    MatSidenavModule,
+    ProductsStoreModule
   ],
   exports: [
     NavbarComponent,
@@ -39,7 +43,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatCheckboxModule,
     MatProgressSpinnerModule,
     MatSidenavModule,
-    SidebarFiltersComponent
+    SidebarFiltersComponent,
+    SibeBareFiltersBaseComponent
   ]
 })
 export class SharedModule { }

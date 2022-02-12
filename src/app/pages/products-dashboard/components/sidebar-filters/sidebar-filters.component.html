@@ -4,7 +4,8 @@
     <section class="example-section">
       <h4>Por tipo:</h4>
       <p *ngFor="let item of (typesOptions$ | async)">
-        <mat-checkbox (change)="handleCheck($event,item)">{{item | titlecase}}</mat-checkbox>
+        <mat-checkbox (change)="handleCheck($event,item)" [checked]="selectedTypes.has(item)">{{item | titlecase}}
+        </mat-checkbox>
       </p>
     </section>
   </div>
