@@ -6,14 +6,21 @@
 
   <div class="products-list">
     <app-toolbar></app-toolbar>
+
     <div class="products-container">
-      <app-grid-products *ngIf="(displayMode$ | async) === gridMode" [products]="(products$ | async)"> </app-grid-products>
-      <app-list-products *ngIf="(displayMode$ | async) === listMode" [products]="(products$ | async)"></app-list-products>
+
+      <app-grid-products *ngIf="(displayMode$ | async) === gridMode" [products]="(products$ | async)">
+      </app-grid-products>
+
+      <app-list-products *ngIf="(displayMode$ | async) === listMode" [products]="(products$ | async)">
+      </app-list-products>
+
       <div class="loading-container" *ngIf="(fetchPending$ | async)">
         <mat-progress-spinner class="example-margin" color="accent" mode="indeterminate">
         </mat-progress-spinner>
       </div>
     </div>
+
   </div>
 
 

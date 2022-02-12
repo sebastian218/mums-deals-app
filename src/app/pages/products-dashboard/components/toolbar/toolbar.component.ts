@@ -7,6 +7,7 @@ import { SortOptions } from '../../model/sortOptions.enum';
 import { DisplayType, IProductsDashboardState } from '../../store/products-store.reducer';
 import * as fromProductSoreSelectors from '../../store/products-store.selectors';
 import * as fromProductStoreActions from '../../store/products-store.actions';
+import { toggleSideNav } from 'src/app/core/root-store/side-nav-store/side-nav-store.actions';
 
 @Component({
   selector: 'app-toolbar',
@@ -36,6 +37,10 @@ export class ToolbarComponent implements OnInit {
 
   handleSort(e: MatSelectChange) {
     this.store.dispatch(fromProductStoreActions.sortBy({ sort: e.value }))
+  }
+
+  handleFilter() {
+    this.store.dispatch(toggleSideNav());
   }
 
 }

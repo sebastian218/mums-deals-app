@@ -10,6 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
+
 @NgModule({
   declarations: [
     NavbarComponent,
@@ -37,7 +38,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatSelectModule,
     MatCheckboxModule,
     MatProgressSpinnerModule,
-    MatSidenavModule
+    MatSidenavModule,
+    SidebarFiltersComponent
   ]
 })
 export class SharedModule { }
