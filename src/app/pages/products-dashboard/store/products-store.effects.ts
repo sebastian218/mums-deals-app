@@ -53,16 +53,18 @@ export class ProductDashboardEffects {
             }
 
             if (action.data.range && action.data.range[1]) {
-              const products = filteredProducts.reduce((acc: IProduct[], el) => {
-                const variantsPrice = el.variants.map(variant => Math.floor(Number(variant.price))).sort((a, b) => a - b);
-                const min = action.data.range[0];
-                const max = action.data.range[1];
-                if (variantInRange(variantsPrice, min, max)) {
-                  acc.push(el);
-                }
-                return acc;
-              }, [])
-              filteredProducts = products;
+              const min = action.data.range[0];
+              const max = action.data.range[1];
+              if (min !== max) {
+                const products = filteredProducts.reduce((acc: IProduct[], el) => {
+                  const variantsPrice = el.variants.map(variant => Math.floor(Number(variant.price))).sort((a, b) => a - b);
+                  if (variantInRange(variantsPrice, min, max)) {
+                    acc.push(el);
+                  }
+                  return acc;
+                }, [])
+                filteredProducts = products;
+              }
             }
 
             return fromProductActions.fetchParamsSuccess({ products: filteredProducts });
