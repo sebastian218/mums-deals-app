@@ -2,7 +2,7 @@
   <h3 class="text-center">{{'SIDEBAR.FILTER' | translate}}</h3>
   <div class="mt-2">
     <section class="example-section">
-      <h4>Por tipo:</h4>
+      <h4>{{'SIDEBAR.BY-TYPE' | translate}}:</h4>
       <p *ngFor="let item of (typesOptions$ | async)">
         <mat-checkbox (change)="handleCheck($event,item)" [checked]="selectedTypes.has(item)">{{item | titlecase}}
         </mat-checkbox>
@@ -10,7 +10,7 @@
     </section>
   </div>
   <div class="mt-4">
-    <h4>Por precio:</h4>
+    <h4>{{'SIDEBAR.BY-PRICE' | translate}}:</h4>
     <mat-slider (change)="handlePriceChange($event)" [(ngModel)]="selectedRange" class="example-margin"
       [value]="selectedRange" [max]="priceRange[1]" [min]="priceRange[0]" [step]="2" [thumbLabel]="true"
       aria-labelledby="example-name-label">

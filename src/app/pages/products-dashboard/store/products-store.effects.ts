@@ -5,8 +5,6 @@ import { ProductsHttpService } from "../services/products-http.service";
 import * as fromProductActions from "./products-store.actions";
 import { map, catchError, exhaustMap } from 'rxjs/operators';
 import { IProduct } from "../model/product.model";
-import { IProductsDashboardState } from "./products-store.reducer";
-import { Store } from "@ngrx/store";
 import { variantInRange } from "./utils/validRang.util";
 
 @Injectable()
@@ -14,8 +12,7 @@ export class ProductDashboardEffects {
 
   constructor(
     private productService: ProductsHttpService,
-    private actions$: Actions,
-    private store: Store<IProductsDashboardState>
+    private actions$: Actions
   ) {
 
   }

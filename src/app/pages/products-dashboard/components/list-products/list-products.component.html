@@ -7,9 +7,9 @@
       <div class="product-info col-8 text-left">
         <h2>{{item.title}}</h2>
         <br>
-        <span> <strong>Type: </strong> {{item.product_type | titlecase}}</span>
+        <span class="product-type"> <strong>{{item.product_type | titlecase}}</strong> </span>
         <br>
-        <span><strong>Sold:</strong> {{item.quantitySold | number: '1.0-0':locale}}</span>
+        <span><strong>{{'PRODUCTOS.SOLD' | translate}}:</strong> {{item.quantitySold | number: '1.0-0':locale}}</span>
       </div>
     </div>
   </ng-container>

@@ -7,11 +7,17 @@
     "SORT": "Ordenar resultados",
     "SORT-OPTIONS": {
       "A-Z": "A-Z",
-      "LOWEST-HIGHEST": "Mayor a menor precio",
-      "HIGHEST-LOWEST": "Menor a mayor precio"
+      "LOWEST-HIGHEST": "Precio: menor a mayor",
+      "HIGHEST-LOWEST": "Precio: mayor a menor"
     }
   },
   "SIDEBAR": {
-    "FILTER": "Filtrar resultados"
+    "FILTER": "Filtrar resultados",
+    "BY-PRICE": "Por precio",
+    "BY-TYPE": "Por tipo"
+  },
+  "PRODUCTS": {
+    "TYPE": "Tipo",
+    "SOLD": "Vendidos"
   }
 }

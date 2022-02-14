@@ -1,5 +1,23 @@
 {
   "NAVBAR": {
     "TITLE": "Welcome to Mum's Deals ! "
+  },
+  "TOOLBAR": {
+    "AVAILABE": "Available Deals",
+    "SORT": "Sort results",
+    "SORT-OPTIONS": {
+      "A-Z": "A-Z",
+      "LOWEST-HIGHEST": "Price: Low to High",
+      "HIGHEST-LOWEST": "Price: High to Low"
+    }
+  },
+  "SIDEBAR": {
+    "FILTER": "Filter results",
+    "BY-PRICE": "Price Range",
+    "BY-TYPE": "Product Type"
+  },
+  "PRODUCTS": {
+    "TYPE": "Type",
+    "SOLD": "Quantity Sold"
   }
   }
