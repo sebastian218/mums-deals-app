@@ -1,7 +1,15 @@
 import { Action, createReducer, on } from "@ngrx/store";
 import { IProduct } from "../model/product.model";
 import { SortOptions } from "../model/sortOptions.enum";
-import { setDisplay, fetchError, fetchProducts, fetchProductsByTypeSuccess, fetchSuccess, sortBy, fetchProductsByType, fetchProductsByPrice } from "./products-store.actions";
+import {
+  setDisplay,
+  fetchError,
+  fetchProducts,
+  fetchSuccess,
+  sortBy,
+  fetchParamsSuccess,
+  fetchParams
+} from "./products-store.actions";
 
 export const productsSotreSelector = 'productsDashboard';
 
@@ -39,23 +47,22 @@ const productsDashboardReducer = createReducer(
   on(fetchProducts, (state) => ({ ...state, fetchPending: true })),
   on(fetchSuccess, (state, props) => ({
     ...state,
-    products: handleSortOptionst(state.selectedSortBy, props.products),
+    products: handleSortOptions(state.selectedSortBy, props.products),
     types: getTypes(props.products),
     priceRange: getPriceRange(props.products),
     fetchPending: false
   })),
-  on(fetchProductsByType, (state, props) => ({ ...state, selectedTypes: props.types })),
-  on(fetchProductsByTypeSuccess, (state, props) => {
-    const products = handleSortOptionst(state.selectedSortBy, props.products);
+  on(fetchParams, (store, props) => ({ ...store, selectedPriceRange: props.data.range, selectedTypes: props.data.types })),
+  on(fetchParamsSuccess, (state, props) => {
+    const products = handleSortOptions(state.selectedSortBy, props.products);
     return ({
       ...state,
       products: products,
       fetchPending: false
     })
   }),
-  on(fetchProductsByPrice, (store, props) => ({ ...store, selectedPriceRange: props.range })),
   on(fetchError, (state) => ({ ...state, fetchError: true, fetchPending: false })),
-  on(sortBy, (state, props) => ({ ...state, products: handleSortOptionst(props.sort, state.products) })),
+  on(sortBy, (state, props) => ({ ...state, products: handleSortOptions(props.sort, state.products) })),
   on(setDisplay, (state, props) => ({ ...state, display: props.mode }))
 );
 
@@ -69,11 +76,17 @@ const getTypes = (products: IProduct[]): Set<string> => {
   products.forEach(prod => {
     typesSet.add(prod.product_type)
   })
-  return typesSet
+  return typesSet;
 }
 
-const handleSortOptionst = (sort: SortOptions, products: IProduct[]): IProduct[] => {
+const handleSortOptions = (sort: SortOptions, products: IProduct[]): IProduct[] => {
   if (sort === SortOptions.AZ) {
+    return products.map(el => el).sort((a, b) => a.title.localeCompare(b.title));
+  }
+  if (sort === SortOptions.MIN_TO_MAY) {
+    return products.map(el => el).sort((a, b) => a.title.localeCompare(b.title));
+  }
+  if (sort === SortOptions.MAY_TO_MIN) {
     return products.map(el => el).sort((a, b) => a.title.localeCompare(b.title));
   }
   return products;
@@ -88,7 +101,8 @@ const getPriceRange = (products: IProduct[]): Array<number> => {
     })
   });
 
-  priceRange.sort((a, b) => a - b);
+  const max = Math.floor(Math.max(...priceRange));
+  const min = Math.floor(Math.min(...priceRange));
 
-  return [Math.floor(priceRange[0]), Math.floor(priceRange[priceRange.length - 1])];
+  return [min, max];
 }

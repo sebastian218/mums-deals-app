@@ -1,5 +1,5 @@
 <div class="p-3 d-felx justify-content-center w-100">
-  <h4 class="text-center">{{'SIDEBAR.FILTER' | translate}}</h4>
+  <h3 class="text-center">{{'SIDEBAR.FILTER' | translate}}</h3>
   <div class="mt-2">
     <section class="example-section">
       <h4>Por tipo:</h4>
@@ -11,16 +11,9 @@
   </div>
   <div class="mt-4">
     <h4>Por precio:</h4>
-    <mat-slider
-        (change)="handlePriceChange($event)"
-        [(ngModel)]="selectedRange"
-        class="example-margin"
-        [value]="selectedRange"
-        [max]="priceRange[1]"
-        [min]="priceRange[0]"
-        [step]="2"
-        [thumbLabel]="true"
-        aria-labelledby="example-name-label">
+    <mat-slider (change)="handlePriceChange($event)" [(ngModel)]="selectedRange" class="example-margin"
+      [value]="selectedRange" [max]="priceRange[1]" [min]="priceRange[0]" [step]="2" [thumbLabel]="true"
+      aria-labelledby="example-name-label">
     </mat-slider>
   </div>
 </div>

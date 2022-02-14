@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, LOCALE_ID, OnInit } from '@angular/core';
 import { IProduct } from '../../model/product.model';
 
 @Component({
@@ -10,4 +10,7 @@ export class GridProductsComponent {
 
   @Input() products: IProduct[] | null = []
 
+  constructor(@Inject(LOCALE_ID) public locale: string) {
+
+  }
 }

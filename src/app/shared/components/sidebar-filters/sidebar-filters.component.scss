@@ -5,3 +5,9 @@
   display: flex;
   justify-content: right;
 }
+
+:host {
+  mat-slider.mat-slider-horizontal::ng-deep{
+    width: 100% !important;
+  }
+}

@@ -1,13 +1,13 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { combineLatest, Observable, of } from "rxjs";
+import { of } from "rxjs";
 import { ProductsHttpService } from "../services/products-http.service";
 import * as fromProductActions from "./products-store.actions";
-import * as fromProductSoreSelectors from "./products-store.selectors";
 import { map, catchError, exhaustMap } from 'rxjs/operators';
 import { IProduct } from "../model/product.model";
 import { IProductsDashboardState } from "./products-store.reducer";
 import { Store } from "@ngrx/store";
+import { variantInRange } from "./utils/validRang.util";
 
 @Injectable()
 export class ProductDashboardEffects {
@@ -32,27 +32,43 @@ export class ProductDashboardEffects {
         ))
     ));
 
-  getProductsByType$ = createEffect(() =>
+  getProductsParams$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(fromProductActions.fetchProductsByType),
+      ofType(fromProductActions.fetchParams),
       exhaustMap((action) =>
         this.productService.getProducts().pipe(
           map((data) => {
 
-            if (action.types.size) {
-              const products = data.reduce((acc: IProduct[], el) => {
-                action.types.forEach(type => {
-                  if (el.product_type === type) {
-                    acc.push(el);
-                  }
-                })
+            let filteredProducts: IProduct[] = data;
 
-                return acc;
-              }, []);
-
-              return fromProductActions.fetchProductsByTypeSuccess({ products });
+            if (action.data.types) {
+              if (action.data.types.size) {
+                const products = data.reduce((acc: IProduct[], el) => {
+                  action.data.types?.forEach(type => {
+                    if (el.product_type === type) {
+                      acc.push(el);
+                    }
+                  })
+                  return acc;
+                }, []);
+                filteredProducts = products;
+              }
             }
-            return fromProductActions.fetchProductsByTypeSuccess({ products: data });
+
+            if (action.data.range && action.data.range[1]) {
+              const products = filteredProducts.reduce((acc: IProduct[], el) => {
+                const variantsPrice = el.variants.map(variant => Math.floor(Number(variant.price))).sort((a, b) => a - b);
+                const min = action.data.range[0];
+                const max = action.data.range[1];
+                if (variantInRange(variantsPrice, min, max)) {
+                  acc.push(el);
+                }
+                return acc;
+              }, [])
+              filteredProducts = products;
+            }
+
+            return fromProductActions.fetchParamsSuccess({ products: filteredProducts });
           }),
           catchError(error => of(fromProductActions.fetchError({ error })))
         ))

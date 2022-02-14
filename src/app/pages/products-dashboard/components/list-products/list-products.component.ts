@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
+import { Component, Inject, Input, LOCALE_ID, OnInit, Optional } from '@angular/core';
 import { IProduct } from '../../model/product.model';
-
+DecimalPipe
 @Component({
   selector: 'app-list-products',
   templateUrl: './list-products.component.html',
@@ -8,7 +9,12 @@ import { IProduct } from '../../model/product.model';
 })
 export class ListProductsComponent {
 
+
   @Input() products: IProduct[] | null = []
+
+  constructor(@Inject(LOCALE_ID) public locale: string) {
+
+  }
 
 
 }

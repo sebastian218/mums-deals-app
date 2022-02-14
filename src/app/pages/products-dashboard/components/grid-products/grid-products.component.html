@@ -6,7 +6,7 @@
       <br>
       <span> <strong>Type: </strong> {{item.product_type | titlecase}}</span>
       <br>
-      <span><strong>Sold:</strong> {{item.quantitySold}}</span>
+      <span><strong>Sold:</strong> {{item.quantitySold | number: '1.0-0':locale}}</span>
     </div>
   </ng-container>
 </div>

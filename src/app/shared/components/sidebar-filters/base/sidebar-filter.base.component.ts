@@ -40,12 +40,14 @@ export class SibeBareFiltersBaseComponent implements OnInit, OnDestroy {
   }
 
   handleCheck(e: MatCheckboxChange, item: any): void {
+    const min = this.priceRange[0];
+    const max = this.selectedRange;
     if (e.checked) {
       this.selectedTypes.add(item)
     } else {
       this.selectedTypes.delete(item);
     }
-    this.store.dispatch(fromProductStoreActions.fetchProductsByType({ types: this.selectedTypes }));
+    this.store.dispatch(fromProductStoreActions.fetchParams({ data: { types: this.selectedTypes, range: [min, max] } }));
   }
 
   setSelectedTypesFromStore(): void {
@@ -61,8 +63,9 @@ export class SibeBareFiltersBaseComponent implements OnInit, OnDestroy {
     const min = this.priceRange[0];
     const max = e.value as number;
     this.selectedRange = max;
-    this.store.dispatch(fromProductStoreActions.fetchProductsByPrice({ range: [min, max] }));
+    this.store.dispatch(fromProductStoreActions.fetchParams({ data: { types: this.selectedTypes, range: [min, max] } }));
   }
+
   setPiceRange() {
     this.pricerange$.pipe(
       takeUntil(this.destroy$),
