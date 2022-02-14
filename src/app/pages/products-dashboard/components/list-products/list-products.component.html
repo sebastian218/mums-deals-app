@@ -1,7 +1,7 @@
 <div class="list-container">
   <ng-container *ngFor="let item of products">
-    <div class="card pt-2 pb-2 row">
-      <div class="col-4 text-center">
+    <div class="card p-2 row">
+      <div class="col-4 text-center image-container">
         <img [src]="item.image.src" alt="productImg.png" height="130px">
       </div>
       <div class="product-info col-8 text-left">
@@ -9,7 +9,9 @@
         <br>
         <span class="product-type"> <strong>{{item.product_type | titlecase}}</strong> </span>
         <br>
-        <span><strong>{{'PRODUCTOS.SOLD' | translate}}:</strong> {{item.quantitySold | number: '1.0-0':locale}}</span>
+        <span class="sold-label">
+          <strong>{{'PRODUCTS.SOLD' | translate}}: </strong> {{item.quantitySold | number: '1.0-0':locale}}
+        </span>
       </div>
     </div>
   </ng-container>
