@@ -8,6 +8,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ProductsStoreModule } from './store/products-store.module';
 import { GridProductsComponent } from './components/grid-products/grid-products.component';
 import { ListProductsComponent } from './components/list-products/list-products.component';
+import { GridSkeletonsComponent } from './components/grid-skeletons/grid-skeletons.component';
+import { ListSkeletonsComponent } from './components/list-skeletons/list-skeletons.component';
 
 
 
@@ -18,6 +20,8 @@ import { ListProductsComponent } from './components/list-products/list-products.
     ProductsDashboardLayoutComponent,
     GridProductsComponent,
     ListProductsComponent,
+    GridSkeletonsComponent,
+    ListSkeletonsComponent,
   ],
   imports: [
     CommonModule,
