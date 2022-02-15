@@ -9,6 +9,7 @@ import { IProduct } from '../../model/product.model';
 export class GridProductsComponent {
 
   @Input() products: IProduct[] | null = []
+  @Input() loading: boolean | null = false;
 
   constructor(@Inject(LOCALE_ID) public locale: string) {
 

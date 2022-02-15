@@ -1,6 +1,6 @@
 <section class="grid-container">
-  <ng-container *ngFor="let item of products">
-    <article class="card p-2">
+  <ng-container *ngIf="!loading">
+    <article class="card p-2" *ngFor="let item of products">
       <div class="image-container">
         <img [src]="item.image.src" alt="productImg.png">
       </div>
@@ -18,4 +18,10 @@
       </div>
     </article>
   </ng-container>
+
+  <ng-container *ngIf="loading">
+    <app-grid-skeletons *ngFor="let item of [1,2,3,4,5,6,7,8]"></app-grid-skeletons>
+  </ng-container>
+
+
 </section>

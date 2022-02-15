@@ -1,6 +1,6 @@
 <section class="list-container">
-  <ng-container *ngFor="let item of products">
-    <article class="card p-2 row">
+  <ng-container  *ngIf="!loading">
+    <article class="card p-2 row" *ngFor="let item of products">
       <div class="col-4 text-center image-container">
         <img [src]="item.image.src" alt="productImg.png" height="130px">
       </div>
@@ -15,4 +15,8 @@
       </div>
     </article>
   </ng-container>
+  <ng-container *ngIf="loading">
+    <app-list-skeletons *ngFor="let item of [1,2,3,4]"></app-list-skeletons>
+  </ng-container>
+  
 </section>

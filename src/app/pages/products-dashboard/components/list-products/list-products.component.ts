@@ -10,7 +10,8 @@ DecimalPipe
 export class ListProductsComponent {
 
 
-  @Input() products: IProduct[] | null = []
+  @Input() products: IProduct[] | null = [];
+  @Input() loading: boolean | null = false;
 
   constructor(@Inject(LOCALE_ID) public locale: string) {
 
