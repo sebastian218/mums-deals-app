@@ -19,8 +19,14 @@
 
         <mat-progress-spinner class="example-margin" color="accent" mode="indeterminate">
         </mat-progress-spinner>
-      
+
       </div>
+
+      <div class="text-center" *ngIf="!(products$ | async)?.length && !(fetchPending$ | async)">
+        <img class="not-found" src="./assets/img/no-result.svg" alt="">
+        <p class="mt-4 text-secondary">{{'DASHBOARD.NOT-FOUND' | translate}}</p>
+      </div>
+
     </div>
 
   </div>

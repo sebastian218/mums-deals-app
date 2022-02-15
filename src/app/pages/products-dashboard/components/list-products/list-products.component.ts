@@ -1,5 +1,5 @@
 import { DecimalPipe } from '@angular/common';
-import { Component, Inject, Input, LOCALE_ID, OnInit, Optional } from '@angular/core';
+import { Component, Inject, Input, LOCALE_ID } from '@angular/core';
 import { IProduct } from '../../model/product.model';
 DecimalPipe
 @Component({

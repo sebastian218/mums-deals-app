@@ -57,7 +57,7 @@ export class ProductDashboardEffects {
               const max = action.data.range[1];
               if (min !== max) {
                 const products = filteredProducts.reduce((acc: IProduct[], el) => {
-                  const variantsPrice = el.variants.map(variant => Math.floor(Number(variant.price))).sort((a, b) => a - b);
+                  const variantsPrice = el.variants.map(variant => Math.floor(Number(variant.price)));
                   if (variantInRange(variantsPrice, min, max)) {
                     acc.push(el);
                   }

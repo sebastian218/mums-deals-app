@@ -1,6 +1,6 @@
-<div class="list-container">
+<section class="list-container">
   <ng-container *ngFor="let item of products">
-    <div class="card p-2 row">
+    <article class="card p-2 row">
       <div class="col-4 text-center image-container">
         <img [src]="item.image.src" alt="productImg.png" height="130px">
       </div>
@@ -13,6 +13,6 @@
           <strong>{{'PRODUCTS.SOLD' | translate}}: </strong> {{item.quantitySold | number: '1.0-0':locale}}
         </span>
       </div>
-    </div>
+    </article>
   </ng-container>
-</div>
+</section>

@@ -19,5 +19,8 @@
   "PRODUCTS": {
     "TYPE": "Tipo",
     "SOLD": "Vendidos"
+  },
+  "DASHBOARD": {
+    "NOT-FOUND":"No encontramos resultados :("
   }
-}
+}  
