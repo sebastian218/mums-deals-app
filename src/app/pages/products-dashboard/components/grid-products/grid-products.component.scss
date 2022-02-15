@@ -1,9 +1,26 @@
 .grid-container {
-  display: flex;
-  flex-flow: row;
-  flex-wrap: wrap;
-  justify-content: left;
-  
+  display: grid;
+  gap: 0.75rem;
+  padding: 30px;
+}
+
+
+@media (min-width: 640px){
+  .grid-container {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+}
+}
+
+@media (min-width: 768px){
+  .grid-container {
+    grid-template-columns: repeat(3,minmax(0,1fr));
+}
+}
+
+@media (min-width: 1024px){
+  .grid-container {
+    grid-template-columns: repeat(4,minmax(0,1fr));
+}
 }
 
 .image-container {
@@ -31,12 +48,6 @@ img{
     object-fit: contain;
 }
 
-.card {
-  min-width: 360px;
-  min-height: 360px;
-  margin:20px;
-}
-
 h2 {
   max-width: 197px;
   text-align: center;
@@ -61,12 +72,3 @@ h2 {
 .sold-label {
   color: rgba(0,0,0,0.5);
 }
-
-@media (max-width:950px){
-
-  .grid-container{
-    justify-content: center;
-  }
-
-}
-
