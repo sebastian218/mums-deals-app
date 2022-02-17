@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { environment } from 'src/environments/environment';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { LOCATION_INITIALIZED, registerLocaleData } from '@angular/common';
 import esAR from '@angular/common/locales/es-AR';
@@ -17,7 +16,7 @@ import { CoreModule } from './core/core.module';
 registerLocaleData(esAR, 'es-Ar');
 
 export function httpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, '/assets/i18n/', `.json?cacheBuster=${environment.cacheBusterHash}`);
+  return new TranslateHttpLoader(http, '/assets/i18n/', '.json');
 }
 
 export function setupTranslateFactory(
