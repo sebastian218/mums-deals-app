@@ -53,14 +53,12 @@ const productsDashboardReducer = createReducer(
     fetchPending: false
   })),
   on(fetchParams, (store, props) => ({ ...store, selectedPriceRange: props.data.range, selectedTypes: props.data.types, fetchPending: true })),
-  on(fetchParamsSuccess, (state, props) => {
-    const products = handleSortOptions(state.selectedSortBy, props.products);
-    return ({
-      ...state,
-      products: products,
-      fetchPending: false,
-    })
-  }),
+  on(fetchParamsSuccess, (state, props) => ({
+    ...state,
+    products: handleSortOptions(state.selectedSortBy, props.products),
+    fetchPending: false,
+  })
+  ),
   on(fetchError, (state) => ({ ...state, fetchError: true, fetchPending: false })),
   on(sortBy, (state, props) => ({ ...state, products: handleSortOptions(props.sort, state.products) })),
   on(setDisplay, (state, props) => ({ ...state, display: props.mode }))

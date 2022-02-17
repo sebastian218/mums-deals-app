@@ -5,7 +5,8 @@ import { ProductsHttpService } from "../services/products-http.service";
 import * as fromProductActions from "./products-store.actions";
 import { map, catchError, exhaustMap } from 'rxjs/operators';
 import { IProduct } from "../model/product.model";
-import { variantInRange } from "./utils/validRang.util";
+import { filterByPriceRange } from "./utils/filterPriceRange.util";
+import { filterByType } from "./utils/filterByType";
 
 @Injectable()
 export class ProductDashboardEffects {
@@ -38,32 +39,15 @@ export class ProductDashboardEffects {
 
             let filteredProducts: IProduct[] = data;
 
-            if (action.data.types) {
-              if (action.data.types.size) {
-                const products = data.reduce((acc: IProduct[], el) => {
-                  action.data.types?.forEach(type => {
-                    if (el.product_type === type) {
-                      acc.push(el);
-                    }
-                  })
-                  return acc;
-                }, []);
-                filteredProducts = products;
-              }
+            if (action.data.types && action.data.types?.size) {
+              filteredProducts = filterByType(filteredProducts, action.data.types);
             }
 
             if (action.data.range && action.data.range[1]) {
               const min = action.data.range[0];
               const max = action.data.range[1];
               if (min !== max) {
-                const products = filteredProducts.reduce((acc: IProduct[], el) => {
-                  const variantsPrice = el.variants.map(variant => Math.floor(Number(variant.price)));
-                  if (variantInRange(variantsPrice, min, max)) {
-                    acc.push(el);
-                  }
-                  return acc;
-                }, [])
-                filteredProducts = products;
+                filteredProducts = filterByPriceRange(min, max, filteredProducts);
               }
             }
 
