@@ -5,6 +5,7 @@
   "TOOLBAR": {
     "AVAILABE": "Cantidad Disponible",
     "SORT": "Ordenar resultados",
+    "LANGUAGE": "Idioma",
     "SORT-OPTIONS": {
       "A-Z": "A-Z",
       "LOWEST-HIGHEST": "Precio: menor a mayor",
@@ -21,6 +22,6 @@
     "SOLD": "Vendidos"
   },
   "DASHBOARD": {
-    "NOT-FOUND":"No encontramos resultados :("
+    "NOT-FOUND": "No encontramos resultados :("
   }
-}  
+}

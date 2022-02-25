@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
 import { Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
@@ -14,7 +14,7 @@ import { toggleSideNav } from 'src/app/core/root-store/side-nav-store/side-nav-s
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
 })
-export class ToolbarComponent implements OnInit {
+export class ToolbarComponent {
 
   amount$: Observable<number> = this.store.select(fromProductSoreSelectors.selectAmount);
   selectedValue: any = SortOptions.AZ;
@@ -24,11 +24,7 @@ export class ToolbarComponent implements OnInit {
     { value: SortOptions.MAY_TO_MIN, viewValue: this.translate.instant('TOOLBAR.SORT-OPTIONS.HIGHEST-LOWEST') },
   ];
 
-  constructor(private translate: TranslateService, private store: Store<IProductsDashboardState>) { }
-
-  ngOnInit(): void {
-
-  }
+  constructor(public translate: TranslateService, private store: Store<IProductsDashboardState>) { }
 
   handleDisplay(type: string) {
     const mode = type === 'grid' ? DisplayType.GRID : DisplayType.LIST;
@@ -37,6 +33,10 @@ export class ToolbarComponent implements OnInit {
 
   handleSort(e: MatSelectChange) {
     this.store.dispatch(fromProductStoreActions.sortBy({ sort: e.value }))
+  }
+
+  handleLangSelect(e: MatSelectChange): void {
+    this.translate.use(e.value);
   }
 
   handleFilter() {

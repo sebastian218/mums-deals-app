@@ -1,4 +1,4 @@
-<div class="border-bottom p-2">
+<div class="toolbar-container border-bottom p-2">
   <div class="row align-items-center">
     <div class="col-6">
       <span> {{'TOOLBAR.AVAILABE' | translate}}: {{amount$ | async}} </span>
@@ -11,15 +11,18 @@
         <app-action-icon iconName='list'></app-action-icon>
       </div>
     </div>
-    <div class="col-4 sort-select">
+    <div class="col-2 sort-select">
       <mat-form-field appearance="fill">
         <mat-label>{{'TOOLBAR.SORT' | translate}}</mat-label>
-        <mat-select [(ngModel)]="selectedValue" name="food" (selectionChange)="handleSort($event)">
+        <mat-select [(ngModel)]="selectedValue" name="sort" (selectionChange)="handleSort($event)">
           <mat-option *ngFor="let item of sortItems" [value]="item.value">
             {{item.viewValue}}
           </mat-option>
         </mat-select>
       </mat-form-field>
+    </div>
+    <div class="col-2 lang-select">
+      <app-language-select></app-language-select>
     </div>
     <div class="col-6  filter-icon">
       <div (click)="handleFilter()">

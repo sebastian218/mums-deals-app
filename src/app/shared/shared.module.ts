@@ -13,13 +13,15 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { ProductsStoreModule } from '../pages/products-dashboard/store/products-store.module';
 import { SibeBareFiltersBaseComponent } from './components/sidebar-filters/base/sidebar-filter.base.component';
 import {MatSliderModule} from '@angular/material/slider';
+import { LanguageSelectComponent } from './components/language-select/language-select.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     SidebarFiltersComponent,
     ActionIconComponent,
-    SibeBareFiltersBaseComponent
+    SibeBareFiltersBaseComponent,
+    LanguageSelectComponent
   ],
   imports: [
     CommonModule,
@@ -47,7 +49,8 @@ import {MatSliderModule} from '@angular/material/slider';
     MatSidenavModule,
     SidebarFiltersComponent,
     SibeBareFiltersBaseComponent,
-    MatSliderModule
+    MatSliderModule,
+    LanguageSelectComponent
   ]
 })
 export class SharedModule { }

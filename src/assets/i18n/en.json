@@ -5,6 +5,7 @@
   "TOOLBAR": {
     "AVAILABE": "Available Deals",
     "SORT": "Sort results",
+    "LANGUAGE": "Language",
     "SORT-OPTIONS": {
       "A-Z": "A-Z",
       "LOWEST-HIGHEST": "Price: Low to High",

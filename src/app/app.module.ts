@@ -1,6 +1,5 @@
 import { APP_INITIALIZER, Injector, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -77,8 +76,11 @@ export function setupTranslateFactory(
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
   constructor(private translate: TranslateService) {
+    this.translate.addLangs(['en', 'es']);
     this.translate.setDefaultLang('es');
+    const browserLang = this.translate.getBrowserLang() as string;
+    this.translate.use(browserLang.match(/en|es/) ? browserLang : 'es');
   }
-}
+  }

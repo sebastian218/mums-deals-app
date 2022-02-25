@@ -16,6 +16,15 @@
   }
 }
 
+.toolbar-container{
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+
+.lang-select{
+  text-align: right;
+}
+
 .filter-icon{
   display: none;
 }
@@ -34,6 +43,10 @@
     display: flex;
     justify-content: right;
     cursor: pointer;
+  }
+
+  .lang-select{
+    display: none;
   }
 
 }
